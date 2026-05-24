@@ -1,0 +1,11 @@
+# Task runner cache
+.task/
+
+# Output binaries
+bin/
+
+
+# Go build artifacts
+*.test
+*.out
+*.exe

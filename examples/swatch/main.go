@@ -57,7 +57,7 @@ func newApp() *appModel {
 	for _, s := range a.swatches {
 		s.SetZoneManager(a.zm)
 		s.SetPickerOptions(
-			ntemoji.WithPresets([]string{"😀", "👍", "🔥", "✅", "❌", "⚠️"}),
+			ntemoji.WithPresets([]string{"😀", "👍", "🔥", "✅", "❌", "🚨"}),
 			ntemoji.WithShowSearch(true),
 		)
 	}
@@ -196,13 +196,18 @@ func (a *appModel) buildMainView() string {
 	a.swatches[2].SetBounds(3, col1, sw, sh)
 	a.swatches[3].SetBounds(3, col2, sw, sh)
 
-	row1 := a.zm.Mark(swatchZoneID(0), "Emoji 1: "+a.swatches[0].SwatchView()) + 
+	label0 := fmt.Sprintf("%-*s", labelLen, "Emoji 1:")
+	label1 := fmt.Sprintf("%-*s", labelLen, "Emoji 2:")
+	label2 := fmt.Sprintf("%-*s", labelLen, "Emoji 3:")
+	label3 := fmt.Sprintf("%-*s", labelLen, "Emoji 4:")
+
+	row1 := a.zm.Mark(swatchZoneID(0), label0+a.swatches[0].SwatchView()) + 
 		strings.Repeat(" ", gap) + 
-		a.zm.Mark(swatchZoneID(1), "Emoji 2: "+a.swatches[1].SwatchView())
+		a.zm.Mark(swatchZoneID(1), label1+a.swatches[1].SwatchView())
 		
-	row2 := a.zm.Mark(swatchZoneID(2), "Emoji 3: "+a.swatches[2].SwatchView()) + 
+	row2 := a.zm.Mark(swatchZoneID(2), label2+a.swatches[2].SwatchView()) + 
 		strings.Repeat(" ", gap) + 
-		a.zm.Mark(swatchZoneID(3), "Emoji 4: "+a.swatches[3].SwatchView())
+		a.zm.Mark(swatchZoneID(3), label3+a.swatches[3].SwatchView())
 
 	lines := []string{title, "", row1, row2, "", help}
 	return strings.Join(lines, "\n")

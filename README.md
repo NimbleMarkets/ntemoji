@@ -12,6 +12,8 @@ It features curated categories of TUI-safe, highly compatible emojis, support fo
 
 [Try out the live WASM demo.](https://nimblemarkets.github.io/ntemoji)
 
+This module was inspired by the [@madicen's `bubble-color-picker` library](https://github.com/madicen/bubble-color-picker).
+
 ## Quickstart
 
 ```go
@@ -106,6 +108,17 @@ Construct the emoji picker with **`New(...Option)`**:
 | `WithStyle(lipgloss.Style)` | Configures custom outer frame border and padding. |
 | `WithAutoDismiss(bool)` | When true, selection includes `Dismiss: true` to auto-hide the modal. |
 | `WithShowSearch(bool)` | Toggles the search input box for matching keywords. |
+
+## TUI Emoji Compatibility & Box-Sizing
+
+Emojis are generally 2 columns wide in terminal user interfaces. However, some emojis (such as those containing the variation selector `\ufe0f`, e.g., `⚠️` or `🌧️`) report a width of **2** columns under standard Go string-width libraries (like Lip Gloss / `uniseg`), but render as only **1** column wide on standard terminal emulators.
+
+When designing custom palettes or presets for terminal widgets like `ntemoji`, this discrepancy causes right-border layout alignment shifts (as the terminal renders the row narrower than Lip Gloss's box-sizing layout calculations).
+
+To guarantee pixel-perfect rectangular borders in all terminal environments:
+- **Only use standard 2-column emojis** where `lipgloss.Width` and terminal rendering widths agree.
+- **Avoid variation selectors** (`\ufe0f`) in custom emoji palettes.
+- All default palettes in `ntemoji` are pre-curated to strictly include safe, matching 2-column emojis.
 
 ## Demos
 

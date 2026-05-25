@@ -25,7 +25,7 @@ func main() {
 
 	picker := ntemoji.New(
 		ntemoji.WithInitialEmoji("🚀"),
-		ntemoji.WithPresets([]string{"😀", "👍", "🔥", "✅", "❌", "⚠️"}),
+		ntemoji.WithPresets([]string{"😀", "👍", "🔥", "✅", "❌", "🚨"}),
 		ntemoji.WithShowSearch(true),
 		ntemoji.WithTheme(forestTheme),
 	)

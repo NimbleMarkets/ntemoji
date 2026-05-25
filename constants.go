@@ -2,6 +2,12 @@ package ntemoji
 
 // Emoji constants for standard, widely supported TUI-friendly emojis.
 // Using constants helps developers reference emojis programmatically by name.
+//
+// NOTE: To ensure pixel-perfect TUI borders and layout alignment, all emojis
+// defined here are strictly curated to have a visual width of 2 columns. Emojis
+// containing variation selectors (like \ufe0f, e.g., ⚠️ or 🌧️) are avoided because
+// they cause rendering conflicts: standard libraries (Lip Gloss / uniseg) report
+// them as 2 columns, but terminal emulators render them as 1 column.
 const (
 	// === Smileys & Emotion ===
 	EmojiGrinningFace       = "😀"
@@ -42,7 +48,7 @@ const (
 	EmojiRaisedHand         = "✋"
 	EmojiVulcanSalute       = "🖖"
 	EmojiOkHand             = "👌"
-	EmojiVictoryHand        = "✌️"
+	EmojiCrossedFingers     = "🤞"
 	EmojiThumbsUp           = "👍"
 	EmojiThumbsDown         = "👎"
 	EmojiClappingHands      = "👏"
@@ -75,9 +81,9 @@ const (
 	EmojiDeciduousTree      = "🌳"
 	EmojiCactus             = "🌵"
 	EmojiMapleLeaf          = "🍁"
-	EmojiSun                = "☀️"
-	EmojiCloudWithRain      = "🌧️"
-	EmojiSnowflake          = "❄️"
+	EmojiSun                = "🌞"
+	EmojiRainbow            = "🌈"
+	EmojiSnowman            = "⛄"
 	EmojiLightning          = "⚡"
 	EmojiFire               = "🔥"
 	EmojiWaterWave          = "🌊"
@@ -111,8 +117,8 @@ const (
 	// === Status, UI & Shapes ===
 	EmojiCheckMarkButton    = "✅"
 	EmojiCrossMark          = "❌"
-	EmojiWarning            = "⚠️"
-	EmojiInfo               = "ℹ️"
+	EmojiWarning            = "🚨"
+	EmojiInfo               = "📢"
 	EmojiRedCircle          = "🔴"
 	EmojiYellowCircle       = "🟡"
 	EmojiGreenCircle        = "🟢"
@@ -130,7 +136,7 @@ const (
 	EmojiHourglass          = "⏳"
 	EmojiHourglassEmpty     = "⌛"
 	EmojiSpeechBalloon      = "💬"
-	EmojiHeart              = "❤️"
+	EmojiHeart              = "💖"
 	EmojiBrokenHeart        = "💔"
 	EmojiSparkles           = "✨"
 	EmojiCollision          = "💥"
@@ -148,13 +154,13 @@ const (
 	EmojiChartUp            = "📈"
 	EmojiChartDown          = "📉"
 	EmojiMemo               = "📝"
-	EmojiEnvelope           = "✉️"
+	EmojiEnvelope           = "📩"
 	EmojiIncomingMail       = "📨"
 	EmojiPackage            = "📦"
-	EmojiGear               = "⚙️"
+	EmojiGear               = "🔧"
 	EmojiWrench             = "🔧"
 	EmojiHammer             = "🔨"
-	EmojiShield             = "🛡️"
+	EmojiToolbox            = "🧰"
 	EmojiKey                = "🔑"
 	EmojiLock               = "🔒"
 	EmojiUnlock             = "🔓"
@@ -162,16 +168,10 @@ const (
 	EmojiLightBulb          = "💡"
 	EmojiMagnifyingGlass    = "🔍"
 
-	// === Arrows ===
-	EmojiArrowUp            = "⬆️"
-	EmojiArrowDown          = "⬇️"
-	EmojiArrowLeft          = "⬅️"
-	EmojiArrowRight         = "➡️"
-	EmojiArrowUpRight       = "↗️"
-	EmojiArrowDownRight     = "↘️"
-	EmojiArrowDownLeft      = "↙️"
-	EmojiArrowUpLeft        = "↖️"
-	EmojiLeftRightArrow     = "↔️"
-	EmojiUpDownArrow        = "↕️"
+	// === Navigation ===
+	EmojiArrowUp            = "🔼"
+	EmojiArrowDown          = "🔽"
+	EmojiArrowLeft          = "👈"
+	EmojiArrowRight         = "👉"
 	EmojiRefresh            = "🔄"
 )
